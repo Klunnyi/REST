@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@RestController //@Controller + @ResponseBody над каждым методом
 @RequestMapping("/people")
 public class PeopleController {
 
@@ -22,13 +22,13 @@ public class PeopleController {
     }
 
     @GetMapping
-    public List<Person> findAll() {
-        return personService.findAll();
+    public List<Person> getPeople() {
+        return personService.findAll(); // Jackson конвертируеет эти обьекты в JSON
     }
 
     @GetMapping("/{id}")
-    public Person findOne(@PathVariable Long id) {
-        return personService.findOne(id);
+    public Person getPerson(@PathVariable("id") Long id) {
+        return personService.findOne(id);  // Jackson конвертируеет в JSON
     }
 
 }
