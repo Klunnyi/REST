@@ -1,17 +1,17 @@
 package com.example.demo.controller;
 
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/hello")
-public class HelloController {
+@RequestMapping("/api")
+public class FirstRestController {
 
+    //@ResponseBody
     @GetMapping
-    public String hello() {
-        return "HELLO WORLD";
+    public String sayHello() {
+        return "hello world";
     }
 
 }

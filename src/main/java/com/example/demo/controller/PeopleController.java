@@ -4,6 +4,7 @@ import com.example.demo.model.Person;
 import com.example.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +23,12 @@ public class PeopleController {
 
     @GetMapping
     public List<Person> findAll() {
-        return personService.getAll();
+        return personService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Person findOne(@PathVariable Long id) {
+        return personService.findOne(id);
     }
 
 }

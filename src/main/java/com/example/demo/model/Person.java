@@ -3,10 +3,12 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -14,8 +16,8 @@ import lombok.experimental.FieldDefaults;
 public class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
     @Column(name = "username")
@@ -35,6 +37,15 @@ public class Person {
 
     @Column(name = "role")
     String role;
+
+    public Person(String username, String password, int year, String email, String salt, String role) {
+        this.username = username;
+        this.password = password;
+        this.year = year;
+        this.email = email;
+        this.salt = salt;
+        this.role = role;
+    }
 
 }
 
