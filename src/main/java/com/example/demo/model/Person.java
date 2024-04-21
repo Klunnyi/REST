@@ -21,7 +21,7 @@ public class Person {
     @Column(name = "username")
     String username;
 
-    @Column(name = "passord")
+    @Column(name = "password")
     String password;
 
     @Column(name = "year_of_birth")
