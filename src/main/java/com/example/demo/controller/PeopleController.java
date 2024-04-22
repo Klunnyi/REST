@@ -4,9 +4,11 @@ import com.example.demo.models.Person;
 import com.example.demo.service.PersonService;
 import com.example.demo.utill.PersonErrorResponse;
 import com.example.demo.utill.PersonNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,6 +42,17 @@ public class PeopleController {
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
+    @PostMapping
+    public ResponseEntity<HttpStatus> create(@RequestBody @Valid Person person, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            //Error
+        }
+
+        personService.save(person);
+
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
 
 
 }

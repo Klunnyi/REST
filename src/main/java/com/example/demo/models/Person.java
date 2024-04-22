@@ -1,6 +1,10 @@
 package com.example.demo.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,15 +25,20 @@ public class Person {
     long id;
 
     @Column(name = "username")
+    @NotEmpty(message = "name should not be empty")
+    @Size(min = 2, max = 20, message = "name should be between 2 and 20 characters")
     String username;
 
     @Column(name = "password")
     String password;
 
     @Column(name = "year_of_birth")
+    @Min(value = 2, message = "year should be greater than 0")
     int year;
 
     @Column(name = "email")
+    @Email
+    @NotEmpty(message = "email should not be empty")
     String email;
 
     @Column(name = "salt")
