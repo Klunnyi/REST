@@ -33,7 +33,7 @@ public class Person {
     String password;
 
     @Column(name = "year_of_birth")
-    @Min(value = 2, message = "year should be greater than 0")
+    @Min(value = 0, message = "year should be greater than 0")
     int year;
 
     @Column(name = "email")
@@ -45,6 +45,7 @@ public class Person {
     String salt;
 
     @Column(name = "role")
+    @NotEmpty(message = "role should not be empty")
     String role;
 
     public Person(String username, String password, int year, String email, String salt, String role) {

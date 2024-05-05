@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class FirstRestController {
 
-    //@ResponseBody
     @GetMapping
     public String sayHello() {
         return "hello world";
